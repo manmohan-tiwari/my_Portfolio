@@ -182,7 +182,7 @@ button {
 }
 
 .hero {
-  padding: 84px 0 54px;
+  padding: 64px 0 42px;
 }
 
 .eyebrow {
@@ -425,7 +425,7 @@ h3 {
 }
 
 .section {
-  padding: 126px 0;
+  padding: 72px 0;
   border-bottom: 1px solid rgba(24, 23, 21, 0.08);
   scroll-margin-top: 110px;
 }
@@ -435,7 +435,7 @@ h3 {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr) minmax(260px, 0.7fr);
   gap: 28px;
   align-items: end;
-  margin-bottom: 54px;
+  margin-bottom: 36px;
 }
 
 .section-lede {
@@ -819,7 +819,7 @@ h3 {
 }
 
 .selected-work-section {
-  padding-top: 118px;
+  padding-top: 0;
 }
 
 .work-index {
@@ -828,7 +828,7 @@ h3 {
 
 .work-entry {
   position: relative;
-  padding: 24px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
@@ -939,7 +939,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
   gap: 24px;
-  padding: 20px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -971,7 +971,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 14px;
-  padding: 22px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -989,7 +989,7 @@ h3 {
 }
 
 .leadership-panel {
-  padding: 24px 0;
+  padding: 18px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -1005,7 +1005,7 @@ h3 {
 }
 
 .leadership-meta {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   color: #4f4a44;
   line-height: 1.8;
 }
@@ -1027,7 +1027,7 @@ h3 {
 }
 
 .academic-block > div {
-  padding: 24px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
 
