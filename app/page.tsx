@@ -1,372 +1,250 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { expertiseGroups, leadershipItems, navigationItems, stackedPanels } from './data'
-import { SiteFooter, SiteHeader } from './site-chrome'
-
-type SelectedWorkItem = {
-  number: string
-  title: string
-  category: string
-  role: string
-  stack: string
-  description: string
-  cta: string
-  href?: string
-}
-
-const selectedWork: SelectedWorkItem[] = [
-  {
-    number: '01',
-    title: 'Jaiswal Trophy Billing System',
-    category: 'BUSINESS MANAGEMENT SYSTEM',
-    role: 'FULL-STACK PHP DEVELOPER',
-    stack: 'PHP · MYSQL/MARIADB · PDO · JAVASCRIPT',
-    description:
-      'A centralized business management system for sales, purchases, inventory, customers, vendors, payments, and reporting.',
-    cta: 'VIEW LIVE',
-    href: 'http://nagarsoftware.in/trophy/',
-  },
-  {
-    number: '02',
-    title: 'Coaching Institute Management System',
-    category: 'EDUCATION MANAGEMENT PLATFORM',
-    role: 'FULL-STACK PHP DEVELOPER',
-    stack: 'PHP · MYSQL/MARIADB · JAVASCRIPT · BOOTSTRAP · DOMPDF',
-    description:
-      'A workflow platform for enquiries, admissions, attendance, fees, receipts, and reporting for a coaching institute.',
-    cta: 'LIVE PROJECT UNAVAILABLE',
-  },
-  {
-    number: '03',
-    title: 'RKAAN Technobyte',
-    category: 'DIGITAL STUDIO WEBSITE',
-    role: 'FRONTEND DEVELOPER / UI ENGINEER',
-    stack: 'REACT · VITE · JAVASCRIPT · TAILWIND CSS',
-    description:
-      'A responsive AI-first digital studio website focused on technology consulting and product development.',
-    cta: 'VIEW LIVE',
-    href: 'https://rkkaan.netlify.app/',
-  },
-  {
-    number: '04',
-    title: 'FocusForge',
-    category: 'AI PRODUCTIVITY APPLICATION',
-    role: 'FULL-STACK FLUTTER DEVELOPER',
-    stack: 'FLUTTER · DART · FIREBASE · GROQ API · RIVERPOD',
-    description:
-      'An AI-assisted productivity application designed to turn overwhelming tasks into manageable actions through energy-aware planning and intelligent assistance.',
-    cta: 'VIEW LIVE',
-    href: 'https://focusforgge.netlify.app/',
-  },
-]
-
-function SectionTitle({
-  eyebrow,
-  title,
-  lede,
-}: {
-  eyebrow: string
-  title: string
-  lede?: string
-}) {
-  return (
-    <div className="section-head">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2>{title}</h2>
-      {lede ? <p className="section-lede">{lede}</p> : <span />}
-    </div>
-  )
-}
+import { 
+  projects, 
+  expertiseGroups, 
+  leadershipItems, 
+  stackedPanels 
+} from './data'
+import ProjectCard from '@/components/ProjectCard'
+import SkillBadge from '@/components/SkillBadge'
+import ExperienceItem from '@/components/ExperienceItem'
+import AnimatedCard from '@/components/AnimatedCard'
+import { AssetImage } from './asset-image'
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState('top')
-  const [visibleSections, setVisibleSections] = useState<string[]>(['top'])
-
-  const sectionIds = navigationItems.map((item) => item.id).filter((id) => id !== 'gallery')
-
-  useEffect(() => {
-    const visibilityObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-
-          const id = entry.target.getAttribute('data-section')
-          if (!id) return
-
-          setVisibleSections((current) => (current.includes(id) ? current : [...current, id]))
-        })
-      },
-      { threshold: 0.18 },
-    )
-
-    const activeObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-
-        if (!visible) return
-
-        const id = visible.target.getAttribute('data-section')
-        if (id) setActiveSection(id)
-      },
-      { rootMargin: '-22% 0px -60% 0px', threshold: [0.15, 0.25, 0.4] },
-    )
-
-    sectionIds.forEach((id) => {
-      const element = document.querySelector<HTMLElement>(`[data-section="${id}"]`)
-      if (!element) return
-
-      visibilityObserver.observe(element)
-      activeObserver.observe(element)
-    })
-
-    const hero = document.querySelector<HTMLElement>('[data-section="top"]')
-    if (hero) {
-      visibilityObserver.observe(hero)
-      activeObserver.observe(hero)
-    }
-
-    return () => {
-      visibilityObserver.disconnect()
-      activeObserver.disconnect()
-    }
-  }, [sectionIds])
-
   return (
-    <main className="site-shell">
-      <SiteHeader activeSection={activeSection} />
-
-      <section className="hero wrap" id="top" data-section="top">
-        <div className={`reveal ${visibleSections.includes('top') ? 'is-visible' : ''}`}>
-          <p className="eyebrow">SOFTWARE DEVELOPER / INDORE, INDIA</p>
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <h1>Software built for the real world, not just the demo.</h1>
-              <p className="hero-lede">
-                I build web applications, mobile products, business systems, and AI-powered tools with a focus on
-                reliable engineering, thoughtful interfaces, and software that works in the real world.
-              </p>
-              <div className="hero-actions">
-                <a className="button button-primary" href="#selected-work">
-                  Explore Selected Work <ArrowUpRight size={16} />
-                </a>
-                <a className="button button-secondary" href="#contact">
-                  Let&apos;s Connect
-                </a>
-              </div>
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+        {/* Fullscreen background pattern/image */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 dark:opacity-40 mix-blend-overlay"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/90 dark:to-slate-950/90 md:bg-gradient-to-r md:from-slate-50/95 md:to-transparent dark:md:from-slate-950/95 dark:md:to-slate-950/40"></div>
+          {/* Additional bottom gradient for smooth transition */}
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-50 dark:from-slate-950 to-transparent"></div>
+        </div>
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+          
+          {/* Hero Content Left */}
+          <div className="w-full md:w-[58%] flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-700 mt-10 md:mt-0">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 text-sm font-semibold tracking-wider mb-8 w-max">
+              AVAILABLE FOR NEW PROJECTS
+            </span>
+            
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] text-slate-900 dark:text-white mb-6">
+              Tech crafted with <span className="text-teal-500 italic">empathy</span>.
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-xl leading-relaxed">
+              I build web applications, mobile products, business systems, and AI-powered tools with a focus on reliable engineering, thoughtful interfaces, and software that works in the real world.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a 
+                href="#selected-work" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-[15px] rounded-full hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20 transition-all duration-300"
+              >
+                View Packages
+              </a>
+              <a 
+                href="#expertise" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-slate-900 dark:text-white border-2 border-slate-900/10 dark:border-white/20 font-bold text-[15px] rounded-full hover:border-slate-900 dark:hover:border-white hover:scale-105 transition-all duration-300"
+              >
+                See Our Work
+              </a>
             </div>
 
-            <div className="hero-panels" aria-label="Core focus areas">
-              {stackedPanels.map((panel) => (
-                <div className={`stack-panel stack-panel-${panel.id}`} key={panel.id}>
-                  <div className="stack-panel-head">
-                    <span>{panel.title}</span>
-                    <small>{panel.subtitle}</small>
-                  </div>
-                  <div className="stack-panel-tags">
-                    {panel.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-slate-500 dark:text-slate-400 uppercase">
+              TECH CRAFTED WITH EMPATHY · PURPOSE IN EVERY PIXEL
+            </p>
+          </div>
+          
+          {/* Hero Visual Right */}
+          <div className="w-full md:w-[42%] relative order-2 md:order-none animate-in fade-in zoom-in duration-1000 delay-300">
+            <div className="relative mx-auto md:ml-auto w-full max-w-[420px] h-[440px] sm:h-[520px] md:max-w-none md:h-[700px] lg:h-[760px]">
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-[15%] bottom-[8%] h-[14%] rounded-full bg-slate-900/10 blur-3xl"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-y-[14%] right-[8%] w-[28%] rounded-full bg-[#b87658]/10 blur-3xl"
+              />
+              <AssetImage
+                src="/assets/profile/developer-silhouette.png"
+                alt="Developer silhouette"
+                fill
+                priority
+                sizes="(min-width: 768px) 42vw, 88vw"
+                objectFit="contain"
+                className="drop-shadow-[0_24px_42px_rgba(15,23,42,0.16)]"
+              />
             </div>
           </div>
+
         </div>
       </section>
 
-      <section className="section wrap selected-work-section" id="selected-work" data-section="selected-work">
-        <SectionTitle
-          eyebrow="01 / SELECTED WORK"
-          title="An editorial project index, presented through typography and structure."
-          lede="Four projects shown as a concise record of category, role, stack, and outcome."
-        />
-
-        <div className={`work-index reveal ${visibleSections.includes('selected-work') ? 'is-visible' : ''}`}>
-          {selectedWork.map((project) => (
-            <article className="work-entry" key={project.number}>
-              <div className="work-entry-grid">
-                <div className="work-number" aria-hidden="true">
-                  {project.number}
-                </div>
-
-                <div className="work-copy">
-                  <h3>{project.title}</h3>
-                  <div className="work-meta">
-                    <span>{project.category}</span>
-                    <span>{project.role}</span>
-                    <span>{project.stack}</span>
-                  </div>
-                  <p>{project.description}</p>
-                </div>
-
-                <div className="work-cta-wrap">
-                  {project.href ? (
-                    <a className="text-button work-cta" href={project.href} target="_blank" rel="noreferrer">
-                      {project.cta} <ArrowUpRight size={16} />
-                    </a>
-                  ) : (
-                    <span className="text-button is-muted work-cta">{project.cta}</span>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section wrap profile-section" id="profile" data-section="profile">
-        <SectionTitle eyebrow="02 / PROFILE" title="Profile" />
-
-        <div className={`profile-copy-only reveal ${visibleSections.includes('profile') ? 'is-visible' : ''}`}>
-          <p>
-            Manmohan Tiwari is a software developer building web applications, mobile applications, backend systems,
-            database-driven platforms, and AI-powered products.
-          </p>
-          <p>
-            The focus stays practical: clear interfaces, stable foundations, and software that feels dependable in
-            everyday use.
-          </p>
-        </div>
-      </section>
-
-      <section className="section wrap" id="expertise" data-section="expertise">
-        <SectionTitle
-          eyebrow="03 / TECHNICAL EXPERTISE"
-          title="Organized capability groups, presented without decoration."
-        />
-
-        <div className={`expertise-list reveal ${visibleSections.includes('expertise') ? 'is-visible' : ''}`}>
-          {expertiseGroups.map((group) => (
-            <article className="expertise-row" key={group.title}>
-              <p className="expertise-label">{group.title}</p>
-              <p className="expertise-items">{group.items.join(' · ')}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section wrap" id="experience" data-section="experience">
-        <SectionTitle eyebrow="04 / EXPERIENCE" title="Experience" />
-
-        <div className={`experience-block reveal ${visibleSections.includes('experience') ? 'is-visible' : ''}`}>
-          <div className="experience-row">
-            <strong>PHP / MySQL Development Internship</strong>
-            <span>2 months</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section wrap" id="leadership" data-section="leadership">
-        <SectionTitle
-          eyebrow="05 / LEADERSHIP"
-          title="Leadership"
-          lede="Technical Head, Data Analytics and Information System Club (DAIS Club), Prestige Institute of Management & Research."
-        />
-
-        <div className={`leadership-grid reveal ${visibleSections.includes('leadership') ? 'is-visible' : ''}`}>
-          <article className="leadership-panel">
-            <p className="leadership-title">Technical Head</p>
-            <p className="leadership-meta">Faculty Coordinators: Dr. Chetan Nagar · Dr. Sharda Haryani</p>
-
-            <div className="text-group">
-              <p className="text-group-label">Responsibilities</p>
-              <ul>
-                {leadershipItems.responsibilities.map((item) => (
-                  <li key={item}>{item}</li>
+      {/* Expertise Panels Grid - Moved outside hero section for better spacing */}
+      <section className="py-12 bg-slate-50 dark:bg-slate-950 px-6 lg:px-12 relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stackedPanels.map((panel, index) => (
+            <AnimatedCard key={panel.id} label={panel.subtitle} title={panel.title} index={index}>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {panel.tags.map(tag => (
+                  <span key={tag} className="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 rounded">
+                    {tag}
+                  </span>
                 ))}
-              </ul>
-            </div>
-          </article>
-
-          <article className="leadership-panel">
-            <p className="text-group-label">Key Activities</p>
-            <ul>
-              {leadershipItems.activities.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
       </section>
 
-      <section className="section wrap academic-section" id="academic" data-section="academic">
-        <SectionTitle eyebrow="06 / ACADEMIC BACKGROUND" title="Academic background" />
-
-        <div className={`academic-block reveal ${visibleSections.includes('academic') ? 'is-visible' : ''}`}>
-          <div>
-            <p className="academic-label">Degree</p>
-            <strong>Bachelor of Computer Applications</strong>
+      {/* Selected Work Section */}
+      <section id="selected-work" className="py-24 bg-white dark:bg-slate-950 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 md:mb-24">
+            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+              01 / Selected Work
+            </p>
+            <h2 className="max-w-3xl">An editorial project index, presented through typography and structure.</h2>
           </div>
-          <div>
-            <p className="academic-label">Institute</p>
-            <strong>Prestige Institute of Management and Research, Deemed to be University</strong>
-          </div>
-          <div>
-            <p className="academic-label">Timeline</p>
-            <strong>2024-2027</strong>
-          </div>
-          <div>
-            <p className="academic-label">CGPA</p>
-            <strong>8.5</strong>
+          
+          <div className="flex flex-col">
+            {projects.map((project) => (
+              <ProjectCard key={project.number} project={project} />
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section wrap contact-section" id="contact" data-section="contact">
-        <div className={`contact-panel reveal ${visibleSections.includes('contact') ? 'is-visible' : ''}`}>
-          <p className="eyebrow">07 / CONTACT</p>
-          <h2>Let&apos;s build something meaningful.</h2>
-          <p className="contact-lede">
-            Open to conversations about software development, product ideas, and opportunities to build work that
-            matters.
-          </p>
-
-          <div className="contact-methods" aria-label="Contact methods">
-            <div>
-              <span>Email</span>
-              <a href="mailto:bca005@pimrindore.in">bca005@pimrindore.in</a>
-            </div>
-            <div>
-              <span>GitHub</span>
-              <a href="https://github.com/Trumos-ai" target="_blank" rel="noreferrer">
-                https://github.com/Trumos-ai
-              </a>
-            </div>
-            <div>
-              <span>LinkedIn</span>
-              <a href="https://www.linkedin.com/in/manmohan-tiwari-87b2873b4/" target="_blank" rel="noreferrer">
-                https://www.linkedin.com/in/manmohan-tiwari-87b2873b4/
-              </a>
-            </div>
-            <div>
-              <span>WhatsApp</span>
-              <a href="https://api.whatsapp.com/send?text=Hi%20Manmohan%2C%20I%27d%20like%20to%20connect." target="_blank" rel="noreferrer">
-                Click to connect
-              </a>
-            </div>
+      {/* Expertise Section */}
+      <section id="expertise" className="py-24 bg-slate-50 dark:bg-slate-900 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 md:mb-24">
+            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+              02 / Technical Expertise
+            </p>
+            <h2 className="max-w-3xl">Organized capability groups, presented cleanly.</h2>
           </div>
-
-          <div className="contact-actions">
-            <a className="button button-primary" href="mailto:bca005@pimrindore.in">
-              Email Me <ArrowUpRight size={16} />
-            </a>
-            <a
-              className="button button-secondary"
-              href="https://api.whatsapp.com/send?text=Hi%20Manmohan%2C%20I%27d%20like%20to%20connect."
-              target="_blank"
-              rel="noreferrer"
-            >
-              Let&apos;s Connect
-            </a>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {expertiseGroups.map((group, index) => (
+              <AnimatedCard key={group.title} title={group.title} index={index}>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {group.items.map(item => (
+                    <SkillBadge key={item} skill={item} />
+                  ))}
+                </div>
+              </AnimatedCard>
+            ))}
           </div>
         </div>
       </section>
 
-      <SiteFooter />
-    </main>
+      {/* Experience Section */}
+      <section id="experience" className="py-24 bg-white dark:bg-slate-950 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 md:mb-24 text-center md:text-left">
+            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+              03 / Experience
+            </p>
+            <h2>Professional journey & internships.</h2>
+          </div>
+          
+          <div className="flex flex-col gap-6">
+            <ExperienceItem 
+              role="PHP / MySQL Development Internship"
+              company="Professional Internship"
+              duration="2 months"
+              responsibilities={[
+                "Developed scalable backend systems using PHP and MySQL.",
+                "Implemented secure REST APIs for frontend integration.",
+                "Optimized database queries for improved application performance."
+              ]}
+              index={0}
+            />
+            {/* Add more ExperienceItem components here as needed */}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership & Academic Section */}
+      <section id="leadership" className="py-24 bg-slate-50 dark:bg-slate-900 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+          
+          {/* Leadership */}
+          <div className="h-full">
+            <AnimatedCard label="04 / Leadership" title="Technical Head" index={0} className="h-full">
+              <div className="mt-2">
+                <p className="font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                  Data Analytics and Information System Club (DAIS Club)
+                </p>
+                <p className="text-sm text-slate-500 mb-8">Prestige Institute of Management & Research</p>
+                
+                <div className="mb-6">
+                  <p className="text-sm font-semibold tracking-wider text-teal-600 dark:text-teal-400 mb-3 uppercase">Responsibilities</p>
+                  <ul className="space-y-2">
+                    {leadershipItems.responsibilities.map(item => (
+                      <li key={item} className="text-slate-600 dark:text-slate-400 text-sm flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div>
+                  <p className="text-sm font-semibold tracking-wider text-teal-600 dark:text-teal-400 mb-3 uppercase">Key Activities</p>
+                  <ul className="space-y-2">
+                    {leadershipItems.activities.map(item => (
+                      <li key={item} className="text-slate-600 dark:text-slate-400 text-sm flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+
+          {/* Academic */}
+          <div id="academic" className="h-full">
+            <AnimatedCard label="05 / Academic Background" title="Education" index={1} className="h-full">
+              <div className="space-y-8 mt-2">
+                <div>
+                  <p className="text-sm text-slate-500 uppercase tracking-wider mb-1">Degree</p>
+                  <p className="font-serif text-xl font-medium text-slate-900 dark:text-white">Bachelor of Computer Applications</p>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500 uppercase tracking-wider mb-1">Institute</p>
+                  <p className="font-serif text-lg text-slate-700 dark:text-slate-300">
+                    Prestige Institute of Management and Research, Deemed to be University
+                  </p>
+                </div>
+                <div className="flex gap-12">
+                  <div>
+                    <p className="text-sm text-slate-500 uppercase tracking-wider mb-1">Timeline</p>
+                    <p className="font-medium text-slate-900 dark:text-white">2024-2027</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-slate-500 uppercase tracking-wider mb-1">CGPA</p>
+                    <p className="font-medium text-teal-600 dark:text-teal-400">8.5</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+
+        </div>
+      </section>
+    </div>
   )
 }

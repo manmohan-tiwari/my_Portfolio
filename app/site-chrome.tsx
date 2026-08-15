@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -44,8 +45,15 @@ export function SiteHeader({ activeSection }: { activeSection: string }) {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="header-inner wrap">
         <Link className="brand-lockup" href="/#top" aria-label="Manmohan Tiwari home">
-          <span className="brand-name">Manmohan Tiwari</span>
-          <span className="brand-label">SOFTWARE DEVELOPER</span>
+          <Image
+            src="/assets/mylogo.png"
+            alt="Manmohan Tiwari logo"
+            width={893}
+            height={279}
+            priority
+            className="h-8 w-auto"
+          />
+          <span className="sr-only">Manmohan Tiwari</span>
         </Link>
 
         <nav className={`site-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary">
