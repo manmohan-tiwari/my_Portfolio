@@ -1,11 +1,11 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
-import { 
-  projects, 
-  expertiseGroups, 
-  leadershipItems, 
-  stackedPanels 
+import {
+  projects,
+  expertiseGroups,
+  leadershipItems,
+  stackedPanels
 } from './data'
 import ProjectCard from '@/components/ProjectCard'
 import SkillBadge from '@/components/SkillBadge'
@@ -17,41 +17,40 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-4 pb-4 overflow-hidden">
         {/* Fullscreen background pattern/image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 dark:opacity-40 mix-blend-overlay"></div>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/90 dark:to-slate-950/90 md:bg-gradient-to-r md:from-slate-50/95 md:to-transparent dark:md:from-slate-950/95 dark:md:to-slate-950/40"></div>
           {/* Additional bottom gradient for smooth transition */}
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-50 dark:from-slate-950 to-transparent"></div>
         </div>
-        
+
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
-          
+
           {/* Hero Content Left */}
           <div className="w-full md:w-[58%] flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-700 mt-10 md:mt-0">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 text-sm font-semibold tracking-wider mb-8 w-max">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-red-600/10 text-red-700 dark:text-red-500 text-sm font-semibold tracking-wider mb-8 w-max">
               AVAILABLE FOR NEW PROJECTS
             </span>
-            
+
             <h1 className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] text-slate-900 dark:text-white mb-6">
-              Tech crafted with <span className="text-teal-500 italic">empathy</span>.
+              Tech crafted with <span className="text-red-600 italic">empathy</span>.
             </h1>
-            
+
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-xl leading-relaxed">
               I build web applications, mobile products, business systems, and AI-powered tools with a focus on reliable engineering, thoughtful interfaces, and software that works in the real world.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <a 
-                href="#selected-work" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-[15px] rounded-full hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20 transition-all duration-300"
+              <a
+                href="#selected-work"
+                className="inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-[15px] rounded-full hover:scale-105 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300"
               >
                 View Packages
               </a>
-              <a 
-                href="#expertise" 
+              <a
+                href="#expertise"
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-slate-900 dark:text-white border-2 border-slate-900/10 dark:border-white/20 font-bold text-[15px] rounded-full hover:border-slate-900 dark:hover:border-white hover:scale-105 transition-all duration-300"
               >
                 See Our Work
@@ -62,7 +61,7 @@ export default function Home() {
               TECH CRAFTED WITH EMPATHY · PURPOSE IN EVERY PIXEL
             </p>
           </div>
-          
+
           {/* Hero Visual Right */}
           <div className="w-full md:w-[42%] relative order-2 md:order-none animate-in fade-in zoom-in duration-1000 delay-300">
             <div className="relative mx-auto md:ml-auto w-full max-w-[420px] h-[440px] sm:h-[520px] md:max-w-none md:h-[700px] lg:h-[760px]">
@@ -90,13 +89,13 @@ export default function Home() {
       </section>
 
       {/* Expertise Panels Grid - Moved outside hero section for better spacing */}
-      <section className="py-12 bg-slate-50 dark:bg-slate-950 px-6 lg:px-12 relative z-10">
+      <section className="py-0 bg-slate-50 dark:bg-slate-950 px-6 lg:px-12 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {stackedPanels.map((panel, index) => (
             <AnimatedCard key={panel.id} label={panel.subtitle} title={panel.title} index={index}>
               <div className="flex flex-wrap gap-2 mt-4">
                 {panel.tags.map(tag => (
-                  <span key={tag} className="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 rounded">
+                  <span key={tag} className="text-xs font-bold px-2 py-1 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded">
                     {tag}
                   </span>
                 ))}
@@ -107,15 +106,17 @@ export default function Home() {
       </section>
 
       {/* Selected Work Section */}
-      <section id="selected-work" className="py-24 bg-white dark:bg-slate-950 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800">
+      <section id="selected-work" className="py-24 bg-white dark:bg-slate-950 px-6 lg:px-12 border-t border-red-100 dark:border-slate-800">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 md:mb-24">
-            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
-              01 / Selected Work
+          <div className="mb-12 md:mb-16">
+            <p className="font-serif text-4xl md:text-5xl lg:text-[3.2rem] leading-tight text-slate-900 dark:text-white mb-3">
+              Selected work.
             </p>
-            <h2 className="max-w-3xl">An editorial project index, presented through typography and structure.</h2>
+            <p className="text-xs md:text-[13px] font-semibold tracking-[0.22em] uppercase text-slate-500 dark:text-slate-400">
+              Systems, products and digital experiences I’ve built.
+            </p>
           </div>
-          
+
           <div className="flex flex-col">
             {projects.map((project) => (
               <ProjectCard key={project.number} project={project} />
@@ -128,12 +129,12 @@ export default function Home() {
       <section id="expertise" className="py-24 bg-slate-50 dark:bg-slate-900 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 md:mb-24">
-            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+            <p className="text-red-600 font-semibold tracking-wider text-sm mb-4 uppercase">
               02 / Technical Expertise
             </p>
             <h2 className="max-w-3xl">Organized capability groups, presented cleanly.</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseGroups.map((group, index) => (
               <AnimatedCard key={group.title} title={group.title} index={index}>
@@ -152,14 +153,14 @@ export default function Home() {
       <section id="experience" className="py-24 bg-white dark:bg-slate-950 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 md:mb-24 text-center md:text-left">
-            <p className="text-teal-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+            <p className="text-red-600 font-semibold tracking-wider text-sm mb-4 uppercase">
               03 / Experience
             </p>
             <h2>Professional journey & internships.</h2>
           </div>
-          
+
           <div className="flex flex-col gap-6">
-            <ExperienceItem 
+            <ExperienceItem
               role="PHP / MySQL Development Internship"
               company="Professional Internship"
               duration="2 months"
@@ -178,7 +179,7 @@ export default function Home() {
       {/* Leadership & Academic Section */}
       <section id="leadership" className="py-24 bg-slate-50 dark:bg-slate-900 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-          
+
           {/* Leadership */}
           <div className="h-full">
             <AnimatedCard label="04 / Leadership" title="Technical Head" index={0} className="h-full">
@@ -187,9 +188,9 @@ export default function Home() {
                   Data Analytics and Information System Club (DAIS Club)
                 </p>
                 <p className="text-sm text-slate-500 mb-8">Prestige Institute of Management & Research</p>
-                
+
                 <div className="mb-6">
-                  <p className="text-sm font-semibold tracking-wider text-teal-600 dark:text-teal-400 mb-3 uppercase">Responsibilities</p>
+                  <p className="text-sm font-semibold tracking-wider text-red-700 dark:text-red-500 mb-3 uppercase">Responsibilities</p>
                   <ul className="space-y-2">
                     {leadershipItems.responsibilities.map(item => (
                       <li key={item} className="text-slate-600 dark:text-slate-400 text-sm flex items-center gap-2">
@@ -199,9 +200,9 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div>
-                  <p className="text-sm font-semibold tracking-wider text-teal-600 dark:text-teal-400 mb-3 uppercase">Key Activities</p>
+                  <p className="text-sm font-semibold tracking-wider text-red-700 dark:text-red-500 mb-3 uppercase">Key Activities</p>
                   <ul className="space-y-2">
                     {leadershipItems.activities.map(item => (
                       <li key={item} className="text-slate-600 dark:text-slate-400 text-sm flex items-center gap-2">
@@ -236,7 +237,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-slate-500 uppercase tracking-wider mb-1">CGPA</p>
-                    <p className="font-medium text-teal-600 dark:text-teal-400">8.5</p>
+                    <p className="font-medium text-red-700 dark:text-red-500">8.5</p>
                   </div>
                 </div>
               </div>

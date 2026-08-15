@@ -56,14 +56,14 @@ export default function Navigation() {
               href={`#${item.id}`}
               onClick={() => setActiveSection(item.id)}
               className={cn(
-                'text-[15px] font-medium transition-all duration-300 hover:text-teal-500 relative group',
-                activeSection === item.id ? 'text-teal-500' : 'text-slate-700 dark:text-slate-300'
+                'text-[15px] font-medium transition-all duration-300 hover:text-red-600 relative group',
+                activeSection === item.id ? 'text-red-600' : 'text-slate-700 dark:text-slate-300'
               )}
             >
               {item.label}
-              <span 
+              <span
                 className={cn(
-                  'absolute -bottom-[4px] left-0 w-full h-[2px] bg-teal-500 transition-transform duration-300 origin-left',
+                  'absolute -bottom-[4px] left-0 w-full h-[2px] bg-red-600 transition-transform duration-300 origin-left',
                   activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 )}
               />
@@ -73,13 +73,13 @@ export default function Navigation() {
 
         <div className="flex items-center gap-3 z-50 pr-1">
           <a href="#" className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 hover:shadow-md transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
           </a>
           <a href="#contact" className="hidden md:flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 hover:shadow-md transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
           </a>
-          
-          <button 
+
+          <button
             className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -91,18 +91,18 @@ export default function Navigation() {
                 </>
               ) : (
                 <>
-                  <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+                  <line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />
                 </>
               )}
             </svg>
           </button>
         </div>
       </div>
-      
+
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="absolute top-[70px] left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 rounded-2xl flex flex-col items-center py-6 gap-5 md:hidden shadow-xl animate-in fade-in slide-in-from-top-2 duration-300">
-           {navigationItems.map((item) => (
+          {navigationItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -112,15 +112,15 @@ export default function Navigation() {
               }}
               className={cn(
                 'text-[16px] font-medium transition-all',
-                activeSection === item.id ? 'text-teal-500' : 'text-slate-700 dark:text-slate-300'
+                activeSection === item.id ? 'text-red-600' : 'text-slate-700 dark:text-slate-300'
               )}
             >
               {item.label}
             </a>
           ))}
           <div className="flex gap-4 mt-2">
-             <a href="#contact" className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="#contact" className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
             </a>
           </div>
         </div>
