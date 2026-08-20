@@ -43,7 +43,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.18em] text-red-700 uppercase transition-colors duration-300 hover:text-red-800 dark:text-red-500 dark:hover:text-red-400"
+              className="relative z-10 inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.18em] text-red-700 uppercase transition-colors duration-300 hover:text-red-800 dark:text-red-500 dark:hover:text-red-400"
             >
               View Live
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -61,11 +61,11 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {project.primaryImage ? (
-        <div className="pointer-events-none absolute right-4 top-1/2 hidden w-[220px] -translate-y-1/2 overflow-hidden rounded-lg border border-slate-200 bg-white opacity-0 shadow-[0_18px_48px_rgba(15,23,42,0.12)] transition-all duration-300 group-hover:translate-x-[-8px] group-hover:opacity-100 xl:block dark:border-slate-700 dark:bg-slate-900">
+        <div className="pointer-events-none absolute right-4 top-1/2 z-0 hidden w-[220px] -translate-y-1/2 overflow-hidden rounded-lg border border-slate-200 bg-white opacity-0 shadow-[0_18px_48px_rgba(15,23,42,0.12)] transition-all duration-300 group-hover:translate-x-[-8px] group-hover:opacity-100 xl:block dark:border-slate-700 dark:bg-slate-900">
           <img
             src={project.primaryImage}
             alt={`${project.title} preview`}
-            className="h-36 w-full object-cover object-top"
+            className="pointer-events-none h-36 w-full object-cover object-top"
           />
         </div>
       ) : null}
