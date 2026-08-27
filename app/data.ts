@@ -89,6 +89,7 @@ export const projects: Project[] = [
     description:
       'A workflow platform for enquiries, admissions, attendance, fees, receipts, and PDF reporting for a coaching institute.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'Dompdf'],
+    liveUrl: 'https://nagarsoftware.in/speed/login.php',
     visual: 'workflow',
     primaryImage: '/assets/projects/coaching-institute/Dashboard_C.png',
     secondaryImage: '/assets/projects/coaching-institute/Fee_Receipt.png',

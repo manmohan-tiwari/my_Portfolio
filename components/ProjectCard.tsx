@@ -17,6 +17,9 @@ export default function ProjectCard({ project }: { project: Project }) {
             <h3 className="text-2xl md:text-[1.9rem] lg:text-[2.1rem] leading-tight text-slate-900 dark:text-white">
               {project.title}
             </h3>
+            <p className="mt-2 text-xs font-medium tracking-[0.08em] text-red-700 dark:text-red-400">
+              {project.role}
+            </p>
           </div>
         </div>
 

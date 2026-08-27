@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { HeartHandshake, ShieldCheck } from 'lucide-react'
 import {
   projects,
   expertiseGroups,
@@ -11,13 +12,13 @@ import ProjectCard from '@/components/ProjectCard'
 import SkillBadge from '@/components/SkillBadge'
 import ExperienceItem from '@/components/ExperienceItem'
 import AnimatedCard from '@/components/AnimatedCard'
-import { AssetImage } from './asset-image'
+import Button from '@/components/Button'
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-4 pb-4 overflow-hidden">
+      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 pb-10 overflow-hidden">
         {/* Fullscreen background pattern/image */}
         <div className="absolute inset-0 z-0">
           {/* Gradient Overlay */}
@@ -43,18 +44,12 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <a
-                href="#selected-work"
-                className="inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-[15px] rounded-full hover:scale-105 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300"
-              >
-                View Packages
-              </a>
-              <a
-                href="#expertise"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-slate-900 dark:text-white border-2 border-slate-900/10 dark:border-white/20 font-bold text-[15px] rounded-full hover:border-slate-900 dark:hover:border-white hover:scale-105 transition-all duration-300"
-              >
-                See Our Work
-              </a>
+              <Button href="#selected-work" className="px-8 py-4 text-[15px]">
+                View selected work
+              </Button>
+              <Button href="#expertise" variant="secondary" className="px-8 py-4 text-[15px]">
+                Explore expertise
+              </Button>
             </div>
 
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-slate-500 dark:text-slate-400 uppercase">
@@ -64,24 +59,41 @@ export default function Home() {
 
           {/* Hero Visual Right */}
           <div className="w-full md:w-[42%] relative order-2 md:order-none animate-in fade-in zoom-in duration-1000 delay-300">
-            <div className="relative mx-auto md:ml-auto w-full max-w-[420px] h-[440px] sm:h-[520px] md:max-w-none md:h-[700px] lg:h-[760px]">
+            <div className="relative mx-auto md:ml-auto w-full max-w-[420px] h-[500px] sm:h-[550px] md:max-w-none md:h-[680px] lg:h-[730px]">
               <div
                 aria-hidden="true"
-                className="absolute inset-x-[15%] bottom-[8%] h-[14%] rounded-full bg-slate-900/10 blur-3xl"
+                className="absolute inset-x-[8%] bottom-[5%] h-[24%] rounded-full bg-red-600/15 blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-y-[14%] right-[8%] w-[28%] rounded-full bg-[#b87658]/10 blur-3xl"
+                className="absolute inset-y-[12%] right-[2%] w-[36%] rounded-full bg-sky-400/15 blur-3xl"
               />
-              <AssetImage
-                src="/assets/profile/developer-silhouette.png"
-                alt="Developer silhouette"
-                fill
-                priority
-                sizes="(min-width: 768px) 42vw, 88vw"
-                objectFit="contain"
-                className="drop-shadow-[0_24px_42px_rgba(15,23,42,0.16)]"
-              />
+              <div className="absolute inset-x-[7%] top-[3%] bottom-[12%] overflow-hidden rounded-[2.5rem] border border-white/70 bg-slate-200 shadow-[0_28px_70px_rgba(15,23,42,0.2)] dark:border-slate-700">
+                <Image
+                  src="/assets/profile/approachable-developer.jpg"
+                  alt="Approachable software developer in a professional portrait"
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 42vw, 88vw"
+                  className="object-cover object-center"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-white/5" />
+                <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/25 bg-slate-950/70 p-4 text-white backdrop-blur-md">
+                  <p className="text-xs font-semibold tracking-[0.18em] text-red-200 uppercase">A thoughtful partnership</p>
+                  <p className="mt-1 font-serif text-xl leading-tight">Clear communication. Dependable delivery.</p>
+                </div>
+              </div>
+
+              <div className="absolute left-0 top-[16%] max-w-[185px] rounded-2xl border border-slate-200/70 bg-white/90 p-4 shadow-lg shadow-slate-900/10 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/90">
+                <HeartHandshake className="h-5 w-5 text-red-600" aria-hidden="true" />
+                <p className="mt-2 text-sm font-bold text-slate-900 dark:text-white">People-first process</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">Listening shapes every decision.</p>
+              </div>
+
+              <div className="absolute right-0 bottom-[4%] flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/90 p-3.5 shadow-lg shadow-slate-900/10 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/90">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"><ShieldCheck className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="pr-1 text-sm font-bold text-slate-800 dark:text-slate-100">Reliable by design</span>
+              </div>
             </div>
           </div>
 
@@ -113,7 +125,7 @@ export default function Home() {
               Selected work.
             </p>
             <p className="text-xs md:text-[13px] font-semibold tracking-[0.22em] uppercase text-slate-500 dark:text-slate-400">
-              Systems, products and digital experiences I’ve built.
+              All projects, technologies, and languages used.
             </p>
           </div>
 

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { navigationItems } from '@/app/data'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import Button from './Button'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -72,15 +73,18 @@ export default function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3 z-50 pr-1">
-          <a href="#" className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 hover:shadow-md transition-all duration-300">
+          <Button href="#selected-work" variant="icon" aria-label="View selected work" className="h-10 w-10 md:h-11 md:w-11">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
-          </a>
-          <a href="#contact" className="hidden md:flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 hover:shadow-md transition-all duration-300">
+          </Button>
+          <Button href="#contact" variant="icon" aria-label="Contact Manmohan" className="hidden md:inline-flex h-11 w-11">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-          </a>
+          </Button>
 
-          <button
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 transition-all duration-300"
+          <Button
+            variant="icon"
+            className="md:hidden"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -95,7 +99,7 @@ export default function Navigation() {
                 </>
               )}
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -119,9 +123,9 @@ export default function Navigation() {
             </a>
           ))}
           <div className="flex gap-4 mt-2">
-            <a href="#contact" className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 dark:bg-slate-800 text-white hover:scale-105 transition-all">
+            <Button href="#contact" variant="icon" aria-label="Contact Manmohan" className="h-11 w-11">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-            </a>
+            </Button>
           </div>
         </div>
       )}

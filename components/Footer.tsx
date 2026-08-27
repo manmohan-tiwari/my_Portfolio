@@ -1,4 +1,5 @@
 import { ArrowUpRight, Github, Linkedin } from 'lucide-react'
+import Button from './Button'
 
 export default function Footer() {
   return (
@@ -19,23 +20,25 @@ export default function Footer() {
           </p>
 
           <div className="mt-8 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-            <a
+            <Button
               href="mailto:bca005@pimrindore.in"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-red-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-950/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-red-900/30 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+              variant="inverse"
+              className="px-7"
             >
               Let&apos;s Talk
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </Button>
 
-            <a
+            <Button
               href="https://wa.me/917999863810"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-700/80 bg-transparent px-7 py-3.5 text-sm font-semibold text-slate-100 transition-all duration-300 hover:-translate-y-0.5 hover:border-red-500 hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+              variant="inverseSecondary"
+              className="px-7"
             >
               WhatsApp
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </Button>
           </div>
 
           <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm text-slate-400 sm:text-[15px]">

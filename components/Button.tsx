@@ -39,5 +39,6 @@ export default function Button({ children, className, variant = 'primary', ...pr
     return <a className={classes} {...props}>{children}</a>
   }
 
-  return <button type="button" className={classes} {...props}>{children}</button>
+  const { type, ...buttonProps } = props as ButtonAsButtonProps
+  return <button {...buttonProps} type={type ?? 'button'} className={classes}>{children}</button>
 }
