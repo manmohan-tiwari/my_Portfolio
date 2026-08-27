@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { navigationItems } from '@/app/data'
 import { clsx, type ClassValue } from 'clsx'
@@ -12,9 +13,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export default function Navigation() {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const sectionHref = (id: string) => pathname === '/gallery' ? `/#${id}` : `#${id}`
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +38,7 @@ export default function Navigation() {
     >
       <div className="w-full px-4 md:px-6 flex items-center justify-between">
         <a
-          href="#top"
+          href={sectionHref('top')}
           aria-label="Manmohan Tiwari home"
           className="flex items-center gap-3 z-50 pl-2 shrink-0"
         >
@@ -54,7 +57,7 @@ export default function Navigation() {
           {navigationItems.map((item) => (
             <a
               key={item.id}
-              href={`#${item.id}`}
+              href={item.id === 'gallery' ? '/gallery' : sectionHref(item.id)}
               onClick={() => setActiveSection(item.id)}
               className={cn(
                 'text-[15px] font-medium transition-all duration-300 hover:text-red-600 relative group',
@@ -73,10 +76,10 @@ export default function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3 z-50 pr-1">
-          <Button href="#selected-work" variant="icon" aria-label="View selected work" className="h-10 w-10 md:h-11 md:w-11">
+          <Button href={sectionHref('selected-work')} variant="icon" aria-label="View selected work" className="h-10 w-10 md:h-11 md:w-11">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
           </Button>
-          <Button href="#contact" variant="icon" aria-label="Contact Manmohan" className="hidden md:inline-flex h-11 w-11">
+          <Button href={sectionHref('contact')} variant="icon" aria-label="Contact Manmohan" className="hidden md:inline-flex h-11 w-11">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
           </Button>
 
@@ -109,7 +112,7 @@ export default function Navigation() {
           {navigationItems.map((item) => (
             <a
               key={item.id}
-              href={`#${item.id}`}
+              href={item.id === 'gallery' ? '/gallery' : sectionHref(item.id)}
               onClick={() => {
                 setActiveSection(item.id)
                 setMobileMenuOpen(false)
@@ -123,7 +126,7 @@ export default function Navigation() {
             </a>
           ))}
           <div className="flex gap-4 mt-2">
-            <Button href="#contact" variant="icon" aria-label="Contact Manmohan" className="h-11 w-11">
+            <Button href={sectionHref('contact')} variant="icon" aria-label="Contact Manmohan" className="h-11 w-11">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
             </Button>
           </div>

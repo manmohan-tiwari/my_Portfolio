@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { HeartHandshake, ShieldCheck } from 'lucide-react'
 import {
   projects,
@@ -13,6 +12,7 @@ import SkillBadge from '@/components/SkillBadge'
 import ExperienceItem from '@/components/ExperienceItem'
 import AnimatedCard from '@/components/AnimatedCard'
 import Button from '@/components/Button'
+import { HeroMedia } from '@/components/HeroMedia'
 
 export default function Home() {
   return (
@@ -68,22 +68,14 @@ export default function Home() {
                 aria-hidden="true"
                 className="absolute inset-y-[12%] right-[2%] w-[36%] rounded-full bg-sky-400/15 blur-3xl"
               />
-              <div className="absolute inset-x-[7%] top-[3%] bottom-[12%] overflow-hidden rounded-[2.5rem] border border-white/70 bg-slate-200 shadow-[0_28px_70px_rgba(15,23,42,0.2)] dark:border-slate-700">
-                <Image
-                  src="/assets/profile/approachable-developer.jpg"
-                  alt="Approachable software developer in a professional portrait"
-                  fill
-                  priority
-                  sizes="(min-width: 768px) 42vw, 88vw"
-                  className="object-cover object-center"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-white/5" />
+              <HeroMedia
+                imageSrc="/assets/profile/approachable-developer.jpg"
+                imageAlt="Approachable software developer in a professional portrait"
+              />
                 <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/25 bg-slate-950/70 p-4 text-white backdrop-blur-md">
                   <p className="text-xs font-semibold tracking-[0.18em] text-red-200 uppercase">A thoughtful partnership</p>
                   <p className="mt-1 font-serif text-xl leading-tight">Clear communication. Dependable delivery.</p>
                 </div>
-              </div>
-
               <div className="absolute left-0 top-[16%] max-w-[185px] rounded-2xl border border-slate-200/70 bg-white/90 p-4 shadow-lg shadow-slate-900/10 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/90">
                 <HeartHandshake className="h-5 w-5 text-red-600" aria-hidden="true" />
                 <p className="mt-2 text-sm font-bold text-slate-900 dark:text-white">People-first process</p>

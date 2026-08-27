@@ -13,11 +13,11 @@ const variantClasses = {
   primary:
     'bg-slate-900 text-white shadow-lg shadow-slate-900/15 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-red-600/20 dark:bg-white dark:text-slate-900 dark:hover:bg-red-500 dark:hover:text-white',
   secondary:
-    'border border-slate-300 bg-white/70 text-slate-800 hover:-translate-y-0.5 hover:border-red-600 hover:bg-red-50 hover:text-red-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-300',
+    'border border-slate-300 bg-white/70 text-slate-800 backdrop-blur-md hover:-translate-y-0.5 hover:border-red-600 hover:bg-red-50 hover:text-red-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-300',
   inverse:
     'bg-red-600 text-white shadow-lg shadow-red-950/20 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-red-900/30 focus-visible:ring-red-500 focus-visible:ring-offset-slate-950',
   inverseSecondary:
-    'border border-slate-700/80 bg-transparent text-slate-100 hover:-translate-y-0.5 hover:border-red-500 hover:bg-red-500/10 hover:text-red-300 focus-visible:ring-red-500 focus-visible:ring-offset-slate-950',
+    'border border-slate-700/80 bg-white/5 backdrop-blur-md text-slate-100 hover:-translate-y-0.5 hover:border-red-500 hover:bg-red-500/10 hover:text-red-300 focus-visible:ring-red-500 focus-visible:ring-offset-slate-950',
   icon:
     'h-10 w-10 p-0 bg-slate-900 text-white hover:-translate-y-0.5 hover:bg-red-700 dark:bg-slate-800 dark:hover:bg-red-600',
 }

@@ -20,14 +20,21 @@ export default function AnimatedCard({
 }: AnimatedCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
-      className={`relative bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 shadow-sm rounded-lg p-8 group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg overflow-hidden flex flex-col ${className}`}
+      viewport={{ once: true, margin: '-50px' }}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: 'easeOut' }}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-white/60 bg-white/60 p-8 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-slate-900/50 dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${className}`}
     >
-      {/* Top Border on Hover */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Top accent border on hover */}
+      <motion.div
+        aria-hidden="true"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        className="absolute top-0 left-0 h-[3px] w-full origin-left bg-red-600"
+      />
 
       {/* Header */}
       {(label || title) && (
@@ -38,7 +45,7 @@ export default function AnimatedCard({
             </span>
           )}
           {title && (
-            <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white group-hover:text-red-700 dark:group-hover:text-red-500 transition-colors">
+            <h3 className="text-2xl font-serif font-bold text-slate-900 transition-colors group-hover:text-red-700 dark:text-white dark:group-hover:text-red-500">
               {title}
             </h3>
           )}
@@ -46,9 +53,7 @@ export default function AnimatedCard({
       )}
 
       {/* Content */}
-      <div className="flex-grow">
-        {children}
-      </div>
+      <div className="flex-grow">{children}</div>
     </motion.div>
   )
 }

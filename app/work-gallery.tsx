@@ -35,21 +35,21 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
   )
 
   return (
-    <section className="section wrap work-gallery-section" id="gallery" data-section="gallery">
-      <div className={`section-head work-gallery-head reveal ${isVisible ? 'is-visible' : ''}`}>
-        <p className="eyebrow">WORK GALLERY</p>
+    <section className="mx-auto max-w-7xl" id="gallery" data-section="gallery">
+      <div className={`mb-10 max-w-3xl transition-all duration-700 ${isVisible ? 'opacity-100' : 'translate-y-4 opacity-0'}`}>
+        <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-red-600 uppercase">WORK GALLERY</p>
         <h2>A visual archive of what I&apos;ve built.</h2>
-        <p className="section-lede">
+        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
           Selected interfaces, products, business systems, and experiments developed across web, mobile, and AI.
         </p>
       </div>
 
-      <div className={`work-gallery-filter reveal ${isVisible ? 'is-visible' : ''}`} role="tablist" aria-label="Work gallery filters">
+      <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Work gallery filters">
         {galleryFilterOptions.map((filter) => (
           <button
             key={filter}
             type="button"
-            className={filter === activeFilter ? 'is-active' : ''}
+            className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition-colors ${filter === activeFilter ? 'border-red-600 bg-red-600 text-white' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-red-300 hover:text-red-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-red-500 dark:hover:text-red-400'}`}
             onClick={() => setActiveFilter(filter)}
             aria-pressed={filter === activeFilter}
           >
@@ -58,7 +58,7 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
         ))}
       </div>
 
-      <div className={`work-gallery-grid reveal ${isVisible ? 'is-visible' : ''}`} aria-label="Portfolio work gallery">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2" aria-label="Portfolio work gallery">
         {visibleItems.map(({ project, projectIndex, image, imageIndex }) => {
           const isFeature = image.size === 'feature'
           const screenshotLabel = imageIndex === 0 ? 'primary screenshot' : 'secondary screenshot'
@@ -68,35 +68,35 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
           return (
             <a
               key={`${project.title}-${image.image}`}
-              className={`gallery-tile ${isFeature ? 'is-feature' : 'is-standard'}`}
+              className={`group overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 ${isFeature ? 'md:col-span-2' : ''}`}
               href={href}
               {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
               aria-label={`${project.title}, ${project.galleryLabel}, view selected work`}
             >
-              <div className="gallery-media">
+              <div className={`relative overflow-hidden bg-slate-100 dark:bg-slate-950 ${isFeature ? 'aspect-[2/1]' : 'aspect-[16/10]'}`}>
                 <AssetImage
                   src={image.image}
                   alt={`${project.title} ${screenshotLabel}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1080px) 50vw, 33vw"
-                  className="gallery-shot"
+                  className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                   objectFit="contain"
                 />
 
-                <div className="gallery-overlay">
-                  <div className="gallery-overlay-copy">
-                    <span className="gallery-overlay-project">{project.title}</span>
-                    <span className="gallery-overlay-category">{project.galleryLabel}</span>
+                <div className="absolute inset-0 flex items-end justify-between bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent p-5 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-serif text-xl">{project.title}</span>
+                    <span className="text-xs font-semibold tracking-[0.12em] text-red-200 uppercase">{project.galleryLabel}</span>
                   </div>
-                  <span className="gallery-overlay-link">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider">
                     View Project <ArrowUpRight size={14} />
                   </span>
                 </div>
               </div>
 
-              <div className="gallery-meta">
-                <span>{project.title}</span>
-                <small>{project.galleryLabel}</small>
+              <div className="flex items-center justify-between gap-4 p-4">
+                <span className="font-serif text-lg text-slate-900 dark:text-white">{project.title}</span>
+                <small className="text-right text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{project.galleryLabel}</small>
               </div>
             </a>
           )
