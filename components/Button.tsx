@@ -7,19 +7,19 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const sharedClasses =
-  'group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2'
+  'group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black'
 
 const variantClasses = {
   primary:
-    'bg-slate-900 text-white shadow-lg shadow-slate-900/15 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-red-600/20 dark:bg-white dark:text-slate-900 dark:hover:bg-red-500 dark:hover:text-white',
+    'bg-red-600 text-white shadow-lg shadow-red-600/20 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-red-500/30',
   secondary:
-    'border border-slate-300 bg-white/70 text-slate-800 backdrop-blur-md hover:-translate-y-0.5 hover:border-red-600 hover:bg-red-50 hover:text-red-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-300',
+    'border border-white/10 bg-white/[0.03] text-white backdrop-blur-md hover:-translate-y-0.5 hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400',
   inverse:
-    'bg-red-600 text-white shadow-lg shadow-red-950/20 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-red-900/30 focus-visible:ring-red-500 focus-visible:ring-offset-slate-950',
+    'bg-white text-black shadow-lg shadow-white/10 hover:-translate-y-0.5 hover:bg-red-50',
   inverseSecondary:
-    'border border-slate-700/80 bg-white/5 backdrop-blur-md text-slate-100 hover:-translate-y-0.5 hover:border-red-500 hover:bg-red-500/10 hover:text-red-300 focus-visible:ring-red-500 focus-visible:ring-offset-slate-950',
+    'border border-white/10 bg-white/[0.03] backdrop-blur-md text-white hover:-translate-y-0.5 hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400',
   icon:
-    'h-10 w-10 p-0 bg-slate-900 text-white hover:-translate-y-0.5 hover:bg-red-700 dark:bg-slate-800 dark:hover:bg-red-600',
+    'h-10 w-10 p-0 bg-white/[0.05] border border-white/[0.08] text-white hover:-translate-y-0.5 hover:bg-red-600 hover:border-red-600',
 }
 
 type CommonProps = {

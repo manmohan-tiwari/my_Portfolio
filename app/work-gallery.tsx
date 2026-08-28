@@ -39,7 +39,7 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
       <div className={`mb-10 max-w-3xl transition-all duration-700 ${isVisible ? 'opacity-100' : 'translate-y-4 opacity-0'}`}>
         <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-red-600 uppercase">WORK GALLERY</p>
         <h2>A visual archive of what I&apos;ve built.</h2>
-        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
+        <p className="mt-4 text-lg text-neutral-400">
           Selected interfaces, products, business systems, and experiments developed across web, mobile, and AI.
         </p>
       </div>
@@ -49,7 +49,7 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
           <button
             key={filter}
             type="button"
-            className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition-colors ${filter === activeFilter ? 'border-red-600 bg-red-600 text-white' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-red-300 hover:text-red-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-red-500 dark:hover:text-red-400'}`}
+            className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition-colors ${filter === activeFilter ? 'border-red-600 bg-red-600 text-white' : 'border-white/[0.08] bg-white/[0.03] text-neutral-400 hover:border-red-500/30 hover:text-red-400'}`}
             onClick={() => setActiveFilter(filter)}
             aria-pressed={filter === activeFilter}
           >
@@ -68,12 +68,12 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
           return (
             <a
               key={`${project.title}-${image.image}`}
-              className={`group overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 ${isFeature ? 'md:col-span-2' : ''}`}
+              className={`group overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${isFeature ? 'md:col-span-2' : ''}`}
               href={href}
               {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
               aria-label={`${project.title}, ${project.galleryLabel}, view selected work`}
             >
-              <div className={`relative overflow-hidden bg-slate-100 dark:bg-slate-950 ${isFeature ? 'aspect-[2/1]' : 'aspect-[16/10]'}`}>
+              <div className={`relative overflow-hidden bg-black/30 ${isFeature ? 'aspect-[2/1]' : 'aspect-[16/10]'}`}>
                 <AssetImage
                   src={image.image}
                   alt={`${project.title} ${screenshotLabel}`}
@@ -95,8 +95,8 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
               </div>
 
               <div className="flex items-center justify-between gap-4 p-4">
-                <span className="font-serif text-lg text-slate-900 dark:text-white">{project.title}</span>
-                <small className="text-right text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{project.galleryLabel}</small>
+                <span className="font-serif text-lg text-white">{project.title}</span>
+                <small className="text-right text-xs font-semibold uppercase tracking-wider text-neutral-500">{project.galleryLabel}</small>
               </div>
             </a>
           )

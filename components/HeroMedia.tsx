@@ -22,7 +22,7 @@ export function HeroMedia({
   videoSrc?: string
 }) {
   return (
-    <div className="absolute inset-x-[7%] top-[3%] bottom-[12%] overflow-hidden rounded-[2.5rem] border border-white/70 bg-slate-200 shadow-[0_28px_70px_rgba(15,23,42,0.2)] dark:border-slate-700">
+    <div className="absolute inset-x-[7%] top-[3%] bottom-[12%] overflow-hidden rounded-[2.5rem] border border-white/[0.15] bg-neutral-900 shadow-[0_28px_70px_rgba(0,0,0,0.5)]">
       {videoSrc ? (
         <video
           className="absolute inset-0 h-full w-full object-cover object-center"

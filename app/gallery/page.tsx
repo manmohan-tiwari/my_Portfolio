@@ -20,7 +20,7 @@ export default function GalleryPage() {
   return (
     <div className="px-6 pb-24 pt-32 lg:px-12">
       <section className="mx-auto mb-10 max-w-7xl" aria-label="Gallery navigation">
-        <Link href="/#selected-work" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition-colors hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400">
+        <Link href="/#selected-work" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-500 transition-colors hover:text-red-400">
           <span aria-hidden="true">←</span> Back to Portfolio
         </Link>
       </section>

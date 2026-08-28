@@ -1,6 +1,6 @@
 export default function SkillBadge({ skill }: { skill: string }) {
   return (
-    <span className="inline-flex items-center justify-center px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded text-sm font-medium text-slate-700 dark:text-slate-300 hover:border-red-600 hover:text-red-700 dark:hover:text-red-500 transition-colors shadow-sm cursor-default">
+    <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border border-white/[0.06] bg-white/[0.03] text-neutral-300 backdrop-blur-sm hover:border-red-500/20 hover:text-red-400 transition-colors duration-300">
       {skill}
     </span>
   )

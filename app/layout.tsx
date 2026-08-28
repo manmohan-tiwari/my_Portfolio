@@ -4,6 +4,8 @@ import type { ReactNode } from 'react'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import MagneticCursor from '@/components/MagneticCursor'
+import ScrollProgress from '@/components/ScrollProgress'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-georgia' })
@@ -48,11 +50,13 @@ const personJsonLd = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-      <body className="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 selection:bg-red-600/30">
+      <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <MagneticCursor />
+        <ScrollProgress />
         <div className="flex min-h-screen flex-col">
           <Navigation />
           <main className="flex-1">{children}</main>
