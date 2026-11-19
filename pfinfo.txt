@@ -1,0 +1,106 @@
+Name: Manmohan Tiwari
+
+Role: Software Developer
+
+Location: Indore, India
+
+Availability: Available for new projects
+
+Profile:
+I build web applications, mobile products, business systems, and AI-powered tools with a focus on reliable engineering, thoughtful interfaces, and software that works in the real world.
+
+I am a BCA student at Prestige Institute of Management and Research, Indore, graduating in 2027. I build Flutter applications under my personal brand, Trumos, alongside web and backend systems and AI-integrated tools.
+
+Currently focused on internships, campus placements, and preparing for a Master's in CS/AI/ML abroad, targeting the 2028 intake.
+
+Personal Brand:
+Trumos
+
+Education:
+Degree: Bachelor of Computer Applications
+Institute: Prestige Institute of Management and Research, Deemed to be University
+Location: Indore, India
+Timeline: 2024-2027
+CGPA: 8.5
+
+Experience:
+
+PHP / MySQL Development Internship
+Company: Professional Internship
+Duration: 2 months
+Responsibilities:
+- Developed scalable backend systems.
+- Implemented secure REST APIs for frontend integration.
+- Optimized database queries for improved application performance.
+
+Full-Stack Product Builder
+Company: Independent Projects & Freelance Builds
+Duration: 2024 - Present
+Responsibilities:
+- Designed and shipped business systems, student tools, and workflow apps.
+- Built user-facing interfaces for real-world outcomes.
+- Connected frontend flows to APIs and database systems with a focus on reliability.
+
+Selected Work:
+
+1. Jaiswal Trophy Billing System
+Category: Business Product Interface
+Role: Full-Stack Developer
+Description: A centralized billing and operations system for sales, purchases, inventory, customers, vendors, payments, and reporting.
+Live link: http://nagarsoftware.in/trophy/
+
+2. Coaching Institute Management System
+Category: Administration Workflow
+Role: Full-Stack Developer
+Description: A workflow platform for enquiries, admissions, attendance, fees, receipts, and PDF reporting for a coaching institute.
+Live link: https://nagarsoftware.in/speed/login.php
+
+3. RKAAN Technobyte
+Category: Studio Website Presentation
+Role: Frontend Developer / UI Engineer
+Description: A one-page website for an AI-first technology studio with responsive presentation and editorial motion.
+Live link: https://rkkan.netlify.app/
+
+4. FocusForge
+Category: Mobile AI Product
+Role: Full-Stack Developer
+Description: An AI-assisted productivity application built around energy-aware planning, task breakdowns, and focused execution.
+Live link: https://focusforgge.netlify.app/
+
+Leadership:
+Position: Technical Head
+Organization: Data Analytics and Information System Club (DAIS Club)
+Institute: Prestige Institute of Management & Research
+
+Responsibilities:
+- Organizing technical events
+- Managing the technical team
+- Coordinating workshops
+- Coordinating technical activities
+- Supporting student participation
+
+Key Activities:
+- BCA AI Agent Workshop
+- BCA IoT Workshop
+- BCA JITO Cyber Workshop
+- Codiant Software Technologies Visit
+- SEO Workshop
+
+Contact:
+Email: bca005@pimrindore.in
+WhatsApp: https://wa.me/916306154367
+
+Social Links:
+GitHub: https://github.com/Trumos-ai
+LinkedIn: https://www.linkedin.com/in/manmohan-tiwari-87b2873b4/
+
+Website Sections:
+Home
+Work
+Gallery
+Profile
+Expertise
+Experience
+Leadership
+Academic
+Contact

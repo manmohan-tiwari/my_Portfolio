@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 
 interface TextRevealProps {
   text: string
@@ -10,16 +10,16 @@ interface TextRevealProps {
   once?: boolean
 }
 
-export default function TextReveal({ 
-  text, 
-  className = '', 
-  delay = 0, 
+export default function TextReveal({
+  text,
+  className = '',
+  delay = 0,
   staggerDelay = 0.03,
-  once = true 
+  once = true
 }: TextRevealProps) {
   const words = text.split(' ')
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -27,7 +27,7 @@ export default function TextReveal({
     },
   }
 
-  const child = {
+  const child: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
@@ -46,7 +46,7 @@ export default function TextReveal({
   }
 
   return (
-    <motion.span
+    <m.span
       className={`inline-flex flex-wrap ${className}`}
       variants={container}
       initial="hidden"
@@ -56,17 +56,17 @@ export default function TextReveal({
       {words.map((word, wordIndex) => (
         <span key={wordIndex} className="inline-flex mr-[0.25em]">
           {word.split('').map((char, charIndex) => (
-            <motion.span
+            <m.span
               key={charIndex}
               variants={child}
-              className="inline-block"
+              className="gpu-animated inline-block"
               style={{ transformOrigin: 'bottom' }}
             >
               {char}
-            </motion.span>
+            </m.span>
           ))}
         </span>
       ))}
-    </motion.span>
+    </m.span>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 interface OrbProps {
   size: number
@@ -13,8 +13,8 @@ interface OrbProps {
 
 function Orb({ size, color, delay, duration, x, y }: OrbProps) {
   return (
-    <motion.div
-      className="absolute rounded-full pointer-events-none"
+    <m.div
+      className="gpu-animated absolute rounded-full pointer-events-none"
       style={{
         width: size,
         height: size,

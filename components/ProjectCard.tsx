@@ -1,29 +1,30 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { m } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/app/data'
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.div 
-      initial="rest" 
-      whileHover="hover" 
-      whileTap="hover" 
-      animate="rest" 
-      className="group relative overflow-hidden border-b border-white/[0.06] bg-transparent transition-colors duration-300"
+    <m.div
+      initial="rest"
+      whileHover="hover"
+      whileTap="hover"
+      animate="rest"
+      className="gpu-animated group relative overflow-hidden border-b border-white/[0.06] bg-transparent transition-colors duration-300"
       data-magnetic="default"
     >
-      <motion.div 
-        aria-hidden="true" 
-        variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }} 
-        transition={{ duration: 0.35, ease: 'easeOut' }} 
-        className="pointer-events-none absolute inset-0 -z-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.3)] backdrop-blur-2xl" 
+      <m.div
+        aria-hidden="true"
+        variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+        className="pointer-events-none absolute inset-0 -z-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
       />
 
-      <motion.div 
-        variants={{ rest: { x: 0 }, hover: { x: 4 } }} 
-        transition={{ duration: 0.35, ease: 'easeOut' }} 
+      <m.div
+        variants={{ rest: { x: 0 }, hover: { x: 4 } }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
         className="relative z-10 flex flex-col gap-5 px-2 py-7 md:flex-row md:items-center md:py-9 lg:gap-8"
       >
         <div className="flex w-full shrink-0 items-start gap-4 md:w-[18rem] md:gap-5 lg:w-[22rem]">
@@ -54,27 +55,27 @@ export default function ProjectCard({ project }: { project: Project }) {
           ) : (
             <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-neutral-600">Available on request</span>
           )}
-          <motion.span 
-            aria-hidden="true" 
-            variants={{ rest: { x: 0, color: '#525252' }, hover: { x: 8, color: '#ef4444' } }} 
-            transition={{ duration: 0.3, ease: 'easeOut' }} 
+          <m.span
+            aria-hidden="true"
+            variants={{ rest: { x: 0, color: '#525252' }, hover: { x: 8, color: '#ef4444' } }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="text-2xl leading-none"
           >
             →
-          </motion.span>
+          </m.span>
         </div>
-      </motion.div>
+      </m.div>
 
       {project.primaryImage ? (
-        <motion.div 
-          aria-hidden="true" 
-          variants={{ rest: { opacity: 0, x: 12, scale: 0.97 }, hover: { opacity: 1, x: -8, scale: 1 } }} 
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} 
+        <m.div
+          aria-hidden="true"
+          variants={{ rest: { opacity: 0, x: 12, scale: 0.97 }, hover: { opacity: 1, x: -8, scale: 1 } }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="pointer-events-none absolute right-4 top-1/2 z-0 hidden w-[220px] -translate-y-1/2 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-[0_18px_48px_rgba(0,0,0,0.4)] backdrop-blur-2xl xl:block"
         >
-          <img src={project.primaryImage} alt={`${project.title} preview`} className="pointer-events-none h-36 w-full object-cover object-top" loading="lazy" />
-        </motion.div>
+          <Image src={project.primaryImage} alt={`${project.title} preview`} width={440} height={288} sizes="220px" className="pointer-events-none h-36 w-full object-cover object-top" />
+        </m.div>
       ) : null}
-    </motion.div>
+    </m.div>
   )
 }

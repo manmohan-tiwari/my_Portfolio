@@ -26,7 +26,37 @@ export type DaisActivity = {
   image: string
 }
 
-export const profileImage = '/assets/profile/manmohan-tiwari.webp'
+export type ExperienceItemData = {
+  role: string
+  company: string
+  duration: string
+  responsibilities: string[]
+}
+
+export const profileImage = '/assets/profile/approachable-developer.jpg'
+
+export const experienceItems: ExperienceItemData[] = [
+  {
+    role: 'PHP / MySQL Development Internship',
+    company: 'Professional Internship',
+    duration: '2 months',
+    responsibilities: [
+      'Developed scalable backend systems using PHP and MySQL.',
+      'Implemented secure REST APIs for frontend integration.',
+      'Optimized database queries for improved application performance.',
+    ],
+  },
+  {
+    role: 'Full-Stack Product Builder',
+    company: 'Independent Projects & Freelance Builds',
+    duration: '2024 - Present',
+    responsibilities: [
+      'Designed and shipped business systems, student tools, and workflow apps.',
+      'Built user-facing interfaces with React, PHP, and Flutter for real-world outcomes.',
+      'Connected frontend flows to APIs and database systems with a focus on reliability.',
+    ],
+  },
+]
 
 export const navigationItems = [
   { id: 'selected-work', label: 'WORK' },
@@ -146,13 +176,8 @@ export const projects: Project[] = [
 export const galleryFilterOptions = ['ALL', 'WEB', 'MOBILE', 'BUSINESS', 'AI'] as const
 
 export const daisActivities: DaisActivity[] = [
-  { title: 'BCA AI Agent Workshop', image: '/assets/dais/ai-workshop.webp' },
-  { title: 'BCA IoT Workshop', image: '/assets/dais/iot-workshop.webp' },
   { title: 'BCA AI Agent Workshop', image: '/assets/dais/Ai_workshop.jpeg' },
   { title: 'BCA IoT Workshop', image: '/assets/dais/iot_workshop.jpeg' },
-  { title: 'BCA JITO Cyber Workshop', image: '/assets/dais/cyber-workshop.webp' },
-  { title: 'Codiant Software Technologies Visit', image: '/assets/dais/codiant-visit.webp' },
-  { title: 'SEO Workshop', image: '/assets/dais/seo-workshop.webp' },
 ]
 
 export const expertiseGroups = [

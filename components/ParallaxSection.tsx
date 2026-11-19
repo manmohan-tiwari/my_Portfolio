@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { ReactNode } from 'react'
 
 interface ParallaxSectionProps {
@@ -11,9 +11,9 @@ interface ParallaxSectionProps {
   direction?: 'up' | 'down'
 }
 
-export default function ParallaxSection({ 
-  children, 
-  className = '', 
+export default function ParallaxSection({
+  children,
+  className = '',
   speed = 0.2,
   direction = 'up'
 }: ParallaxSectionProps) {
@@ -32,9 +32,9 @@ export default function ParallaxSection({
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
-      <motion.div style={{ y }}>
+      <m.div className="gpu-animated" style={{ y }}>
         {children}
-      </motion.div>
+      </m.div>
     </div>
   )
 }

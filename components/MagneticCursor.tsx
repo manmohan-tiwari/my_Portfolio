@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { m, useMotionValue, useSpring } from 'framer-motion'
 
 export default function MagneticCursor() {
   const [isHovering, setIsHovering] = useState(false)
+  const [isTextHovering, setIsTextHovering] = useState(false)
   const [hoverType, setHoverType] = useState<'default' | 'link' | 'button'>('default')
   const [isVisible, setIsVisible] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
@@ -29,6 +30,10 @@ export default function MagneticCursor() {
 
     const target = e.target as HTMLElement
     const magneticEl = target.closest('[data-magnetic]') as HTMLElement
+    const textEl = target.closest('h1, h2, h3, h4, h5, h6, p, a, span, li, label, button')
+    const textHovering = Boolean(textEl?.textContent?.trim())
+
+    setIsTextHovering(textHovering)
 
     if (magneticEl) {
       const rect = magneticEl.getBoundingClientRect()
@@ -71,8 +76,8 @@ export default function MagneticCursor() {
   return (
     <>
       {/* Main cursor dot - Red accent */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+      <m.div
+        className="gpu-animated fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -80,7 +85,7 @@ export default function MagneticCursor() {
           translateY: '-50%',
         }}
       >
-        <motion.div
+        <m.div
           animate={{
             width: isHovering ? (hoverType === 'button' ? 64 : 48) : 10,
             height: isHovering ? (hoverType === 'button' ? 64 : 48) : 10,
@@ -88,13 +93,37 @@ export default function MagneticCursor() {
             scale: isClicking ? 0.8 : 1,
           }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="rounded-full bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]"
+          className="rounded-full"
+          style={{
+            backgroundColor: isTextHovering ? '#facc15' : '#ef4444',
+            boxShadow: isTextHovering
+              ? '0 0 24px rgba(250, 204, 21, 0.75)'
+              : '0 0 20px rgba(239, 68, 68, 0.5)',
+          }}
         />
-      </motion.div>
+      </m.div>
+
+      <m.div
+        className="gpu-animated fixed top-0 left-0 pointer-events-none z-[9997] rounded-full"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+          translateX: '-50%',
+          translateY: '-50%',
+          background: 'radial-gradient(circle, rgba(250, 204, 21, 0.2) 0%, rgba(250, 204, 21, 0.08) 35%, transparent 72%)',
+          filter: 'blur(4px)',
+        }}
+        animate={{
+          width: isTextHovering ? 180 : 0,
+          height: isTextHovering ? 180 : 0,
+          opacity: isTextHovering && isVisible ? 1 : 0,
+        }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+      />
 
       {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+      <m.div
+        className="gpu-animated fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -102,10 +131,8 @@ export default function MagneticCursor() {
           translateY: '-50%',
         }}
       >
-        <motion.div
+        <m.div
           animate={{
-            x: magneticXSpring,
-            y: magneticYSpring,
             width: isHovering ? (hoverType === 'button' ? 80 : 56) : 40,
             height: isHovering ? (hoverType === 'button' ? 80 : 56) : 40,
             opacity: isVisible ? (isHovering ? 0.8 : 0.3) : 0,
@@ -114,10 +141,17 @@ export default function MagneticCursor() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="rounded-full border border-red-500/40"
           style={{
-            boxShadow: isHovering ? '0 0 30px rgba(239,68,68,0.2)' : 'none',
+            x: magneticXSpring,
+            y: magneticYSpring,
+            borderColor: isTextHovering ? 'rgba(250, 204, 21, 0.6)' : 'rgba(239, 68, 68, 0.4)',
+            boxShadow: isTextHovering
+              ? '0 0 30px rgba(250, 204, 21, 0.35)'
+              : isHovering
+                ? '0 0 30px rgba(239, 68, 68, 0.2)'
+                : 'none',
           }}
         />
-      </motion.div>
+      </m.div>
 
       <style jsx global>{`
         @media (pointer: fine) {

@@ -4,13 +4,21 @@ import {
   projects,
   expertiseGroups,
   leadershipItems,
-  stackedPanels
+  stackedPanels,
+  profileImage,
+  experienceItems,
 } from './data'
 import ProjectCard from '@/components/ProjectCard'
 import SkillBadge from '@/components/SkillBadge'
 import ExperienceItem from '@/components/ExperienceItem'
 import AnimatedCard from '@/components/AnimatedCard'
 import Button from '@/components/Button'
+import { HeroMedia } from '@/components/HeroMedia'
+import TextReveal from '@/components/TextReveal'
+import MagneticWrapper from '@/components/MagneticWrapper'
+import ParallaxSection from '@/components/ParallaxSection'
+import TiltCard from '@/components/TiltCard'
+import { WorkGallery } from './work-gallery'
 
 export default function Home() {
   return (
@@ -33,8 +41,9 @@ export default function Home() {
               AVAILABLE FOR NEW PROJECTS
             </span>
 
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] text-white mb-6">
-              Tech crafted with <span className="text-red-500 italic">empathy</span>.
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] text-white mb-6" style={{ perspective: 800 }}>
+              <TextReveal text="Tech crafted with" />{' '}
+              <TextReveal text="empathy." className="text-red-500 italic" delay={0.3} />
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-400 mb-10 max-w-xl leading-relaxed">
@@ -42,17 +51,28 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button href="#selected-work" className="px-8 py-4 text-[15px]">
-                View selected work
-              </Button>
-              <Button href="#expertise" variant="secondary" className="px-8 py-4 text-[15px]">
-                Explore expertise
-              </Button>
+              <MagneticWrapper type="button" strength={0.25} className="w-max">
+                <Button href="#selected-work" className="px-8 py-4 text-[15px]">
+                  View selected work
+                </Button>
+              </MagneticWrapper>
+              <MagneticWrapper type="button" strength={0.25} className="w-max">
+                <Button href="#expertise" variant="secondary" className="px-8 py-4 text-[15px]">
+                  Explore expertise
+                </Button>
+              </MagneticWrapper>
             </div>
 
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-neutral-500 uppercase">
               TECH CRAFTED WITH EMPATHY · PURPOSE IN EVERY PIXEL
             </p>
+          </div>
+
+          {/* Hero Media Right */}
+          <div className="relative hidden md:block w-full max-w-md aspect-[4/5] shrink-0">
+            <ParallaxSection speed={0.15}>
+              <HeroMedia imageSrc={profileImage} imageAlt="Manmohan Tiwari" />
+            </ParallaxSection>
           </div>
 
         </div>
@@ -62,15 +82,17 @@ export default function Home() {
       <section className="py-0 bg-transparent px-6 lg:px-12 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {stackedPanels.map((panel, index) => (
-            <AnimatedCard key={panel.id} label={panel.subtitle} title={panel.title} index={index}>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {panel.tags.map(tag => (
-                  <span key={tag} className="text-xs font-bold px-2 py-1 bg-red-600/10 border border-red-600/20 text-red-400 rounded backdrop-blur-sm">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </AnimatedCard>
+            <TiltCard key={panel.id} max={6}>
+              <AnimatedCard label={panel.subtitle} title={panel.title} index={index} className="h-full">
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {panel.tags.map(tag => (
+                    <span key={tag} className="text-xs font-bold px-2 py-1 bg-red-600/10 border border-red-600/20 text-red-400 rounded backdrop-blur-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </AnimatedCard>
+            </TiltCard>
           ))}
         </div>
       </section>
@@ -78,19 +100,50 @@ export default function Home() {
       {/* Selected Work Section */}
       <section id="selected-work" className="py-24 bg-transparent px-6 lg:px-12 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 md:mb-16">
+          <ParallaxSection speed={0.1} className="mb-12 md:mb-16">
             <p className="font-serif text-4xl md:text-5xl lg:text-[3.2rem] leading-tight text-white mb-3">
               Selected work.
             </p>
             <p className="text-xs md:text-[13px] font-semibold tracking-[0.22em] uppercase text-neutral-500">
               All projects, technologies, and languages used.
             </p>
-          </div>
+          </ParallaxSection>
 
           <div className="flex flex-col">
             {projects.map((project) => (
               <ProjectCard key={project.number} project={project} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Work Gallery Section */}
+      <section className="py-24 bg-transparent px-6 lg:px-12 border-t border-white/[0.06]">
+        <WorkGallery isVisible />
+      </section>
+
+      {/* Profile Section */}
+      <section id="profile" className="py-24 bg-transparent px-6 lg:px-12 border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <ParallaxSection speed={0.12} className="order-2 md:order-1">
+            <p className="text-red-500 font-semibold tracking-wider text-sm mb-4 uppercase">
+              Profile
+            </p>
+            <h2 className="max-w-xl text-white mb-6">Building software that solves real problems.</h2>
+            <p className="text-neutral-400 leading-relaxed mb-4 max-w-xl">
+              I&apos;m a BCA student at Prestige Institute of Management and Research, Indore, graduating in 2027.
+              I build Flutter applications under my personal brand, Trumos, alongside web and backend systems in
+              PHP, React, and AI-integrated tools.
+            </p>
+            <p className="text-neutral-400 leading-relaxed max-w-xl">
+              Currently focused on internships, campus placements, and preparing for a Master&apos;s in CS/AI/ML
+              abroad, targeting the 2028 intake.
+            </p>
+          </ParallaxSection>
+          <div className="order-1 md:order-2 relative w-full max-w-sm mx-auto aspect-[4/5]">
+            <TiltCard max={5}>
+              <HeroMedia imageSrc={profileImage} imageAlt="Manmohan Tiwari profile" />
+            </TiltCard>
           </div>
         </div>
       </section>
@@ -107,13 +160,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseGroups.map((group, index) => (
-              <AnimatedCard key={group.title} title={group.title} index={index}>
-                <div className="flex flex-wrap gap-3 mt-4">
-                  {group.items.map(item => (
-                    <SkillBadge key={item} skill={item} />
-                  ))}
-                </div>
-              </AnimatedCard>
+              <TiltCard key={group.title} max={6}>
+                <AnimatedCard title={group.title} index={index} className="h-full">
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {group.items.map(item => (
+                      <SkillBadge key={item} skill={item} />
+                    ))}
+                  </div>
+                </AnimatedCard>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -130,17 +185,16 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <ExperienceItem
-              role="PHP / MySQL Development Internship"
-              company="Professional Internship"
-              duration="2 months"
-              responsibilities={[
-                "Developed scalable backend systems using PHP and MySQL.",
-                "Implemented secure REST APIs for frontend integration.",
-                "Optimized database queries for improved application performance."
-              ]}
-              index={0}
-            />
+            {experienceItems.map((item, index) => (
+              <ExperienceItem
+                key={`${item.company}-${item.role}`}
+                role={item.role}
+                company={item.company}
+                duration={item.duration}
+                responsibilities={item.responsibilities}
+                index={index}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -150,7 +204,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
 
           {/* Leadership */}
-          <div className="h-full">
+          <TiltCard max={4} className="h-full">
             <AnimatedCard label="04 / Leadership" title="Technical Head" index={0} className="h-full">
               <div className="mt-2">
                 <p className="font-semibold text-neutral-200 mb-2">
@@ -183,35 +237,37 @@ export default function Home() {
                 </div>
               </div>
             </AnimatedCard>
-          </div>
+          </TiltCard>
 
           {/* Academic */}
-          <div id="academic" className="h-full">
-            <AnimatedCard label="05 / Academic Background" title="Education" index={1} className="h-full">
-              <div className="space-y-8 mt-2">
-                <div>
-                  <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Degree</p>
-                  <p className="font-serif text-xl font-medium text-white">Bachelor of Computer Applications</p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Institute</p>
-                  <p className="font-serif text-lg text-neutral-400">
-                    Prestige Institute of Management and Research, Deemed to be University
-                  </p>
-                </div>
-                <div className="flex gap-12">
+          <TiltCard max={4} className="h-full" >
+            <div id="academic">
+              <AnimatedCard label="05 / Academic Background" title="Education" index={1} className="h-full">
+                <div className="space-y-8 mt-2">
                   <div>
-                    <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Timeline</p>
-                    <p className="font-medium text-white">2024-2027</p>
+                    <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Degree</p>
+                    <p className="font-serif text-xl font-medium text-white">Bachelor of Computer Applications</p>
                   </div>
                   <div>
-                    <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">CGPA</p>
-                    <p className="font-medium text-red-500">8.5</p>
+                    <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Institute</p>
+                    <p className="font-serif text-lg text-neutral-400">
+                      Prestige Institute of Management and Research, Deemed to be University
+                    </p>
+                  </div>
+                  <div className="flex gap-12">
+                    <div>
+                      <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">Timeline</p>
+                      <p className="font-medium text-white">2024-2027</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-neutral-500 uppercase tracking-wider mb-1">CGPA</p>
+                      <p className="font-medium text-red-500">8.5</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </AnimatedCard>
-          </div>
+              </AnimatedCard>
+            </div>
+          </TiltCard>
 
         </div>
       </section>

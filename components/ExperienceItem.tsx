@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 interface ExperienceItemProps {
   role: string
@@ -12,12 +12,12 @@ interface ExperienceItemProps {
 
 export default function ExperienceItem({ role, company, duration, responsibilities, index }: ExperienceItemProps) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-2xl p-8 hover:border-red-500/20 transition-all duration-500"
+      className="gpu-animated group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-2xl p-8 hover:border-red-500/20 transition-all duration-500"
       style={{
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03)',
       }}
@@ -40,6 +40,6 @@ export default function ExperienceItem({ role, company, duration, responsibiliti
           </li>
         ))}
       </ul>
-    </motion.div>
+    </m.div>
   )
 }

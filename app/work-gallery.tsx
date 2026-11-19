@@ -73,7 +73,10 @@ export function WorkGallery({ isVisible }: { isVisible: boolean }) {
               {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
               aria-label={`${project.title}, ${project.galleryLabel}, view selected work`}
             >
-              <div className={`relative overflow-hidden bg-black/30 ${isFeature ? 'aspect-[2/1]' : 'aspect-[16/10]'}`}>
+              <div
+                className={`relative overflow-hidden bg-black/30 ${isFeature ? 'aspect-[2/1]' : 'aspect-[16/10]'}`}
+                style={{ position: 'relative' }}
+              >
                 <AssetImage
                   src={image.image}
                   alt={`${project.title} ${screenshotLabel}`}

@@ -30,7 +30,7 @@ export default function Footer() {
             </Button>
 
             <Button
-              href="https://wa.me/917999863810"
+              href="https://wa.me/916306154367"
               target="_blank"
               rel="noopener noreferrer"
               variant="inverseSecondary"

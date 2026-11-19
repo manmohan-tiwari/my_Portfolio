@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 interface MagneticWrapperProps {
   children: ReactNode
@@ -10,9 +10,9 @@ interface MagneticWrapperProps {
   type?: 'default' | 'link' | 'button'
 }
 
-export default function MagneticWrapper({ 
-  children, 
-  className = '', 
+export default function MagneticWrapper({
+  children,
+  className = '',
   strength = 0.3,
   type = 'default'
 }: MagneticWrapperProps) {
@@ -36,16 +36,16 @@ export default function MagneticWrapper({
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       data-magnetic={type}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
-      className={className}
+      className={`gpu-animated ${className}`}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

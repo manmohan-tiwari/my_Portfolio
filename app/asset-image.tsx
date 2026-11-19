@@ -28,7 +28,7 @@ export function AssetImage({
 
   if (hasError) {
     return (
-      <div className={`${className ?? ''} asset-fallback`} aria-label={alt} role="img">
+      <div className={`${fill ? 'absolute inset-0' : ''} ${className ?? ''} asset-fallback`} aria-label={alt} role="img">
         Missing asset: {src}
       </div>
     )

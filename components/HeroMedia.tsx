@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import { AssetImage } from '@/app/asset-image'
 
 /**
  * Hero visual slot.
@@ -22,7 +22,7 @@ export function HeroMedia({
   videoSrc?: string
 }) {
   return (
-    <div className="absolute inset-x-[7%] top-[3%] bottom-[12%] overflow-hidden rounded-[2.5rem] border border-white/[0.15] bg-neutral-900 shadow-[0_28px_70px_rgba(0,0,0,0.5)]">
+    <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] border border-white/[0.15] bg-neutral-900 shadow-[0_28px_70px_rgba(0,0,0,0.5)]">
       {videoSrc ? (
         <video
           className="absolute inset-0 h-full w-full object-cover object-center"
@@ -35,7 +35,7 @@ export function HeroMedia({
           preload="none"
         />
       ) : (
-        <Image
+        <AssetImage
           src={imageSrc}
           alt={imageAlt}
           fill

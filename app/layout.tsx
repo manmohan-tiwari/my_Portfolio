@@ -1,11 +1,13 @@
+import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import type { ReactNode } from 'react'
-import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import MagneticCursor from '@/components/MagneticCursor'
 import ScrollProgress from '@/components/ScrollProgress'
+import AnimatedMeshGradient from '@/components/AnimatedMeshGradient'
+import FloatingOrbs from '@/components/FloatingOrbs'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-georgia' })
@@ -57,6 +59,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         />
         <MagneticCursor />
         <ScrollProgress />
+        <div className="fixed inset-0 -z-10 bg-black">
+          <AnimatedMeshGradient />
+          <FloatingOrbs />
+        </div>
         <div className="flex min-h-screen flex-col">
           <Navigation />
           <main className="flex-1">{children}</main>
